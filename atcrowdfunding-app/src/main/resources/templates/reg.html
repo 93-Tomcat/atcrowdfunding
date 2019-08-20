@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keys" content="">
+    <meta name="author" content="">
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/login.css">
+	<style>
+
+	</style>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <div><a class="navbar-brand" href="protected/index.html" style="font-size:32px;">尚筹网-创意产品众筹平台</a></div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <form id="regForm" class="form-signin" role="form" method="post" th:action="@{/user/reg}">
+        <h2 class="form-signin-heading"><i class="glyphicon glyphicon-log-in"></i> 用户注册</h2>
+          <div class="alert alert-danger" role="alert" th:if="${msg!=null}" th:text="${msg}">
+
+          </div>
+		  <div class="form-group has-success has-feedback"> 
+			<input type="text" class="form-control" name="mobile"
+                   placeholder="请输入手机号" autofocus th:value="${vo!=null?vo.mobile:''}">
+			<span class="glyphicon glyphicon-user form-control-feedback"></span>
+		  </div>
+		  <div class="form-group has-success has-feedback">
+			<input type="text" class="form-control"  name="password" placeholder="请输入登录密码" style="margin-top:10px;">
+			<span class="glyphicon glyphicon-lock form-control-feedback"></span>
+		  </div>
+		  <div class="form-group has-success has-feedback">
+			<input type="text" class="form-control" name="email"
+                   placeholder="请输入邮箱地址" style="margin-top:10px;" th:value="${vo!=null?vo.email:''}">
+			<span class="glyphicon glyphicon glyphicon-envelope form-control-feedback"></span>
+		  </div>
+          <div class="form-group has-success has-feedback">
+              <input type="text" class="form-control"  name="code" placeholder="请输入验证码" style="margin-top:10px;">
+              <span class="glyphicon glyphicon glyphicon-envelope form-control-feedback"></span>
+              <a id="sendCodeBtn"  class="btn btn-primary">发送验证码</a>
+          </div>
+
+        <div class="checkbox">
+          <label>
+            忘记密码
+          </label>
+          <label style="float:right">
+            <a href="login.html">我有账号</a>
+          </label>
+        </div>
+        <a class="btn btn-lg btn-success btn-block" onclick="register();" > 注册</a>
+      </form>
+    </div>
+    <script src="jquery/jquery-2.1.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="layer/layer.js"></script>
+  <script>
+      var wait=60;
+      function time(o) {
+          if (wait == 0) {
+              o.removeAttribute("disabled");
+              o.innerHTML="免费获取验证码";
+              wait = 60;
+          } else {
+              o.setAttribute("disabled", true);
+              o.innerHTML="重新发送(" + wait + ")";
+              wait--;
+              setTimeout(function() {
+                  time(o)
+              }, 1000)
+          }
+      }
+      $("#sendCodeBtn").click(function () {
+          time(this);
+          //1、发送获取验证码请求；
+          var mobile = $("#regForm input[name='mobile']").val();
+          if(mobile != ""){
+              //http://192.168.14.41:7000/user/sendsms
+              $.post("http://192.168.14.41:7000/user/sendsms?mobile="+mobile,function(data){
+                    layer.msg("短信发送完成。请注意查收")
+              });
+          }else{
+              layer.msg("请先输入手机号");
+          }
+
+      });
+
+      function register() {
+            $("#regForm").submit();
+      }
+
+  </script>
+  </body>
+</html>

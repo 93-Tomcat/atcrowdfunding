@@ -1,0 +1,32 @@
+{
+  "groups": [
+    {
+      "name": "aliyun.sms",
+      "type": "com.atguigu.atcrowdfunding.user.component.SmsTemplate",
+      "sourceType": "com.atguigu.atcrowdfunding.user.component.SmsTemplate"
+    }
+  ],
+  "properties": [
+    {
+      "name": "aliyun.sms.appcode",
+      "type": "java.lang.String",
+      "sourceType": "com.atguigu.atcrowdfunding.user.component.SmsTemplate"
+    },
+    {
+      "name": "aliyun.sms.host",
+      "type": "java.lang.String",
+      "sourceType": "com.atguigu.atcrowdfunding.user.component.SmsTemplate"
+    },
+    {
+      "name": "aliyun.sms.method",
+      "type": "java.lang.String",
+      "sourceType": "com.atguigu.atcrowdfunding.user.component.SmsTemplate"
+    },
+    {
+      "name": "aliyun.sms.path",
+      "type": "java.lang.String",
+      "sourceType": "com.atguigu.atcrowdfunding.user.component.SmsTemplate"
+    }
+  ],
+  "hints": []
+}

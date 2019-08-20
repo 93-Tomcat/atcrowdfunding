@@ -1,0 +1,12 @@
+com\atguigu\atcrowdfunding\app\config\AlipayTemplate.class
+com\atguigu\atcrowdfunding\app\service\feign\ProjectFeignService.class
+com\atguigu\atcrowdfunding\app\controller\ProjectController.class
+com\atguigu\atcrowdfunding\app\AtcrowdfundingAppApplication.class
+com\atguigu\atcrowdfunding\app\controller\PayController.class
+com\atguigu\atcrowdfunding\app\controller\UserController.class
+com\atguigu\atcrowdfunding\app\service\feign\UserServiceFeign.class
+com\atguigu\atcrowdfunding\app\config\FeignConfig.class
+com\atguigu\atcrowdfunding\app\service\feign\OrderFeignService.class
+com\atguigu\atcrowdfunding\app\config\AppMvcConfig.class
+com\atguigu\atcrowdfunding\app\component\OssTemplate.class
+com\atguigu\atcrowdfunding\app\controller\PageController.class

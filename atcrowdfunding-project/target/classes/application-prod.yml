@@ -1,0 +1,29 @@
+server:
+  port: 8000
+
+
+
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://39.97.110.91:8761/eureka
+  instance:
+    prefer-ip-address: true #使用ip注册进去
+
+
+spring:
+  application:
+    name: atcrowdfunding-project
+  datasource:
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://39.105.81.163:3306/atcrowdfunding?serverTimezone=UTC
+  redis:
+    host: 39.105.81.163
+
+mybatis:
+  mapper-locations: classpath:/mybatis/mapper/*.xml
